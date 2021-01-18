@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebHistory;
@@ -30,6 +31,7 @@ import javafx.scene.web.WebView;
  */
 public class FXMLDocumentController implements Initializable {
 
+  
     
     private Label label;
     @FXML
@@ -42,6 +44,10 @@ public class FXMLDocumentController implements Initializable {
     private AnchorPane window;
     @FXML
     private Button rightarrowbutton;
+    @FXML
+    private TextField textbar;
+    @FXML
+    private Button searchbutton;
     
 
     @Override
@@ -49,8 +55,10 @@ public class FXMLDocumentController implements Initializable {
         WebEngine engine = myWebView.getEngine();
         engine.load("https://www.startpage.com");
         engine = myWebView.getEngine();
-
+        
+        textbar.setText(engine.getLocation());
     }
+    
 
     @FXML
     private void btnclick(ActionEvent event) {
@@ -77,4 +85,16 @@ public class FXMLDocumentController implements Initializable {
         history.go(1);
     }
 
+   
+
+    @FXML
+    private void textsearch(ActionEvent event) {
+        WebEngine engine = myWebView.getEngine();
+        engine.load(textbar.getText());
+        
+    }
+
+  
+   
+    
 }
