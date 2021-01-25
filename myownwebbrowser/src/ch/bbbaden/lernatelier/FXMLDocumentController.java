@@ -8,7 +8,7 @@
  					
  Beschreibung:
  Dieses Java Programm ist ein Browser.
-
+---------------------------------------------
  */
 package ch.bbbaden.lernatelier;
 
@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToolBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebHistory;
@@ -31,7 +32,8 @@ import javafx.scene.web.WebView;
  */
 public class FXMLDocumentController implements Initializable {
 
-  
+    
+  private boolean isDarkMode = true;
     
     private Label label;
     @FXML
@@ -48,6 +50,12 @@ public class FXMLDocumentController implements Initializable {
     private TextField textbar;
     @FXML
     private Button searchbutton;
+    @FXML
+    private Button buttonlight;
+    @FXML
+    private ToolBar menubar;
+    
+    
     
 
     @Override
@@ -56,16 +64,17 @@ public class FXMLDocumentController implements Initializable {
         engine.load("https://www.startpage.com");
         engine = myWebView.getEngine();
         
-        textbar.setText(engine.getLocation());
+        
     }
     
-
+    //reload button
     @FXML
     private void btnclick(ActionEvent event) {
         WebEngine engine = myWebView.getEngine();
         engine.reload();
     }
-
+    
+    //go back button
     @FXML
     private void goBack(ActionEvent event) {
         WebEngine engine = myWebView.getEngine();
@@ -76,6 +85,7 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    //go forward button
     @FXML
     private void goforward(ActionEvent event) {
         WebEngine engine = myWebView.getEngine();
@@ -86,11 +96,24 @@ public class FXMLDocumentController implements Initializable {
     }
 
    
-
+    //loads website from a label
     @FXML
     private void textsearch(ActionEvent event) {
         WebEngine engine = myWebView.getEngine();
         engine.load(textbar.getText());
+        
+    }
+    
+    //this button can change between a dark and a light theme.
+    @FXML
+    private void changemodes(ActionEvent event) {
+        if (isDarkMode==true) {
+            menubar.setStyle("-fx-background-color: #ffffff; ");
+            isDarkMode=false;
+        }else{
+            menubar.setStyle("-fx-background-color: #000000; ");
+            isDarkMode = true;
+        }
         
     }
 
