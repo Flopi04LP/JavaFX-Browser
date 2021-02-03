@@ -60,6 +60,7 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         WebEngine engine = myWebView.getEngine();
         engine.load("https://www.startpage.com");
         engine = myWebView.getEngine();
@@ -77,7 +78,6 @@ public class FXMLDocumentController implements Initializable {
     //go back button
     @FXML
     private void goBack(ActionEvent event) {
-        WebEngine engine = myWebView.getEngine();
         WebEngine webEngine = myWebView.getEngine();
         
         WebHistory history = webEngine.getHistory();
@@ -88,7 +88,6 @@ public class FXMLDocumentController implements Initializable {
     //go forward button
     @FXML
     private void goforward(ActionEvent event) {
-        WebEngine engine = myWebView.getEngine();
         WebEngine webEngine = myWebView.getEngine();
         
         WebHistory history = webEngine.getHistory();
